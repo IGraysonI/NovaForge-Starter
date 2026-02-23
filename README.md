@@ -1,2 +1,3 @@
-# NovaForge-Starter
-Flutter starter project
+# novaforge_starter
+
+A new Flutter project.
