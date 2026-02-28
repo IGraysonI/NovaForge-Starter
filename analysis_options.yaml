@@ -1,16 +1,44 @@
-include: package:lints/recommended.yaml
+include: package:flutter_lints/flutter.yaml
+
+formatter:
+  page_width: 120
 
 analyzer:
   exclude:
     # Build
     - "build/**"
-    # Codegen
-    - "lib/**.g.dart"
     # Tests
     - "test/**.mocks.dart"
     - ".test_coverage.dart"
+    - "coverage/**"
     # Assets
     - "assets/**"
+    # Generated
+    - "lib/src/common/localization/generated/**"
+    - "lib/src/common/constants/pubspec.yaml.g.dart"
+    - "lib/src/common/model/generated/**"
+    - "**.g.dart"
+    - "**.gql.dart"
+    - "**.freezed.dart"
+    - "**.config.dart"
+    - "**.mocks.dart"
+    - "**.gen.dart"
+    - "**.pb.dart"
+    - "**.pbenum.dart"
+    - "**.pbjson.dart"
+    # Flutter Version Manager
+    - ".fvm/**"
+    # Tools
+    #- "tool/**"
+    - "scripts/**"
+    - ".dart_tool/**"
+    # Platform
+    - "ios/**"
+    - "android/**"
+    - "web/**"
+    - "macos/**"
+    - "windows/**"
+    - "linux/**"
 
   # Enable the following options to enable strong mode.
   language:
@@ -19,7 +47,8 @@ analyzer:
     strict-inference: true
 
   errors:
-    todo: ignore
+    # Allow having TODOs in the code
+    todo: info
 
     # Info
     directives_ordering: info
@@ -27,6 +56,8 @@ analyzer:
 
     # Warning
     unsafe_html: warning
+    missing_return: warning
+    missing_required_param: warning
     no_logic_in_create_state: warning
     empty_catches: warning
 
@@ -37,13 +68,12 @@ analyzer:
     avoid_types_as_parameter_names: error
     valid_regexps: error
     always_require_non_null_named_parameters: error
-    one_member_abstracts: ignore
 
 linter:
   rules:
     # Public packages
-    public_member_api_docs: false
-    lines_longer_than_80_chars: false
+    #public_member_api_docs: true
+    #lines_longer_than_80_chars: true
 
     # Enabling rules
     always_use_package_imports: true
@@ -54,8 +84,16 @@ linter:
     prefer_relative_imports: false
     prefer_final_locals: false
     avoid_escaping_inner_quotes: false
+    curly_braces_in_flow_control_structures: false
+    one_member_abstracts: false
 
     # Enabled
+    use_named_constants: true
+    unnecessary_constructor_name: true
+    sort_constructors_first: true
+    exhaustive_cases: true
+    sort_unnamed_constructors_first: true
+    type_literal_in_constant_pattern: true
     always_put_required_named_parameters_first: true
     avoid_annotating_with_dynamic: true
     avoid_bool_literals_in_conditional_expressions: true
@@ -65,7 +103,6 @@ linter:
     avoid_js_rounded_ints: true
     avoid_print: true
     avoid_renaming_method_parameters: true
-    avoid_returning_null_for_future: true
     avoid_returning_null_for_void: true
     avoid_single_cascade_in_expression_statements: true
     avoid_slow_async_io: true
@@ -78,6 +115,7 @@ linter:
     close_sinks: true
     control_flow_in_finally: true
     empty_statements: true
+    collection_methods_unrelated_type: true
     join_return_with_assignment: true
     leading_newlines_in_multiline_strings: true
     literal_only_boolean_expressions: true
@@ -119,6 +157,7 @@ linter:
     unnecessary_statements: true
     unnecessary_string_escapes: true
     unnecessary_string_interpolations: true
+    # unsafe_html: true
     use_full_hex_values_for_flutter_colors: true
     use_raw_strings: true
     use_string_buffers: true
@@ -127,7 +166,6 @@ linter:
 
     # Pedantic 1.9.0
     always_declare_return_types: true
-    always_require_non_null_named_parameters: true
     annotate_overrides: true
     avoid_empty_else: true
     avoid_init_to_null: true
@@ -136,7 +174,6 @@ linter:
     avoid_shadowing_type_parameters: true
     avoid_types_as_parameter_names: true
     camel_case_extensions: true
-    curly_braces_in_flow_control_structures: false
     empty_catches: true
     empty_constructor_bodies: true
     library_names: true
@@ -187,12 +224,10 @@ linter:
     avoid_catches_without_on_clauses: true
     avoid_catching_errors: true
     use_to_and_as_if_applicable: true
-    one_member_abstracts: true
     avoid_classes_with_only_static_members: true
     prefer_mixin: true
     use_setters_to_change_properties: true
     avoid_setters_without_getters: true
-    avoid_returning_null: true
     avoid_returning_this: true
     type_annotate_public_apis: true
     avoid_types_on_closure_parameters: true
