@@ -43,5 +43,8 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
 
+  # dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+  flutter_launcher_icons: ^0.14.3
+
 flutter:
   uses-material-design: true
