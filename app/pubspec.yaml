@@ -31,7 +31,7 @@ resolution: workspace
 #    path: screenshot_1.png
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.8.1
   flutter: ">=3.29.3 <4.0.0"
 
 dependencies:
@@ -60,7 +60,7 @@ dependencies:
   stack_trace: 1.12.1
 
   # Desktop
-  win32: ^5.14.0
+  win32: ^5.15.0
   window_manager: ^0.5.1
 
   # Web
@@ -68,7 +68,7 @@ dependencies:
 
   # Utils
   clock: ^1.1.2
-  package_info_plus: ^8.3.0
+  package_info_plus: ^9.0.0
   drift_db_viewer: ^2.1.0
   platform_info: ^5.0.0
   path_provider: ^2.1.5
@@ -78,20 +78,20 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
   # Code generation
-  build_runner: ^2.4.15
-  flutter_gen_runner: ^5.11.0
-  pubspec_generator: ^4.3.0
+  build_runner: ^2.4.11
+  flutter_gen_runner: ^5.13.0
+  pubspec_generator: ^5.0.1
 
   # TODO: Add script for flutter_launcher_icons
   # dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
-  flutter_launcher_icons: ^0.14.3
+  flutter_launcher_icons: ^0.14.4
 
   # TODO: Add script for flutter_native_splash
   # dart run flutter_native_splash:create --path=flutter_native_splash.yaml
-  flutter_native_splash: ^2.4.5
+  flutter_native_splash: ^2.4.7
 
 flutter:
   uses-material-design: true
