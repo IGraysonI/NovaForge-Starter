@@ -9,7 +9,12 @@ abstract final class ErrorUtil {
   ErrorUtil._();
 
   /// Log the error to the console and to Crashlytics.
-  static Future<void> logError(Object exception, StackTrace stackTrace, {String? hint, bool fatal = false}) async {
+  static Future<void> logError(
+    Object exception,
+    StackTrace stackTrace, {
+    String? hint,
+    bool fatal = false,
+  }) async {
     try {
       if (exception is String) {
         return await logMessage(exception, stackTrace: stackTrace, hint: hint, warning: true);
@@ -22,7 +27,12 @@ abstract final class ErrorUtil {
   }
 
   /// Logs a message to the console and to Crashlytics.
-  static Future<void> logMessage(String message, {StackTrace? stackTrace, String? hint, bool warning = false}) async {
+  static Future<void> logMessage(
+    String message, {
+    StackTrace? stackTrace,
+    String? hint,
+    bool warning = false,
+  }) async {
     try {
       l.e(message, stackTrace ?? StackTrace.current);
       $captureMessage(message, stackTrace, hint, warning: warning).ignore();
