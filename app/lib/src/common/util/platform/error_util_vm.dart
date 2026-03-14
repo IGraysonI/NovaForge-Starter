@@ -3,8 +3,12 @@
  * FirebaseCrashlytics.instance
  *   .recordError(exception, stackTrace ?? StackTrace.current, reason: hint, fatal: fatal);
  * */
-Future<void> $captureException(Object exception, StackTrace stackTrace, String? hint, {bool fatal = false}) =>
-    Future<void>.value();
+Future<void> $captureException(
+  Object exception,
+  StackTrace stackTrace,
+  String? hint, {
+  bool fatal = false,
+}) => Future<void>.value();
 // FirebaseCrashlytics.instance.recordError(exception, stackTrace, reason: hint, fatal: fatal);
 
 /*

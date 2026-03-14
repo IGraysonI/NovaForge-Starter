@@ -48,7 +48,11 @@ Future<void> $disposeApp(Dependencies dependencies) async {}
 Future<void> _catchExceptions() async {
   try {
     PlatformDispatcher.instance.onError = (error, stackTrace) {
-      ErrorUtil.logError(error, stackTrace, hint: 'ROOT ERROR\r\n${Error.safeToString(error)}').ignore();
+      ErrorUtil.logError(
+        error,
+        stackTrace,
+        hint: 'ROOT ERROR\r\n${Error.safeToString(error)}',
+      ).ignore();
       return true;
     };
     final sourceFlutterError = FlutterError.onError;
@@ -58,7 +62,6 @@ Future<void> _catchExceptions() async {
         details.stack ?? StackTrace.current,
         hint: 'FLUTTER ERROR\r\n$details',
       ).ignore();
-      // FlutterError.presentError(details);
       sourceFlutterError?.call(details);
     };
   } on Object catch (error, stackTrace) {
