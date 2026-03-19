@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:novaforge_starter/src/common/util/app_zone.dart';
+import 'package:novaforge_starter/src/common/util/error_util.dart';
+import 'package:novaforge_starter/src/common/widget/application_error.dart' deferred as app_error;
 import 'package:novaforge_starter/src/feature/initialization/initialization.dart' deferred as initialization;
 
 void main() => appZone(() async {
@@ -12,7 +14,11 @@ void main() => appZone(() async {
         child: const MainApp(),
       ),
     ),
-    onError: (error, stackTrace) async {},
+    onError: (error, stackTrace) async {
+      await app_error.loadLibrary();
+      runApp(app_error.ApplicationError(error: error));
+      ErrorUtil.logError(error, stackTrace).ignore();
+    },
   );
 });
 
