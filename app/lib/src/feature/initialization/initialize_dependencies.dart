@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:l/l.dart';
 import 'package:novaforge_starter/src/common/model/dependencies.dart';
+import 'package:novaforge_starter/src/feature/initialization/platform/platform_initialization.dart';
 
 typedef _InitializationStep = FutureOr<void> Function(Dependencies dependencies);
 
@@ -25,4 +26,6 @@ Future<Dependencies> $initializeDependencies({void Function(int progress, String
   return dependencies;
 }
 
-final Map<String, _InitializationStep> _initializationSteps = <String, _InitializationStep>{};
+final Map<String, _InitializationStep> _initializationSteps = <String, _InitializationStep>{
+  'Platform pre-initialization': (_) => $platformInitialization(),
+};
