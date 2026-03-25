@@ -1,8 +1,12 @@
 import 'dart:async';
 
 import 'package:l/l.dart';
+import 'package:novaforge_starter/src/common/model/app_metadata.dart';
 import 'package:novaforge_starter/src/common/model/dependencies.dart';
+import 'package:novaforge_starter/src/common/util/screen_util.dart';
+import 'package:novaforge_starter/src/constants/pubspec.yaml.g.dart';
 import 'package:novaforge_starter/src/feature/initialization/platform/platform_initialization.dart';
+import 'package:platform_info/platform_info.dart';
 
 typedef _InitializationStep = FutureOr<void> Function(Dependencies dependencies);
 
@@ -28,4 +32,22 @@ Future<Dependencies> $initializeDependencies({void Function(int progress, String
 
 final Map<String, _InitializationStep> _initializationSteps = <String, _InitializationStep>{
   'Platform pre-initialization': (_) => $platformInitialization(),
+  'Creating app metadata': (dependencies) => dependencies.appMetadata = AppMetadata(
+    isWeb: platform.js,
+    isRelease: platform.buildMode.release,
+    appName: Pubspec.name,
+    appVersion: Pubspec.version.representation,
+    appVersionMajor: Pubspec.version.major,
+    appVersionMinor: Pubspec.version.minor,
+    appVersionPatch: Pubspec.version.patch,
+    appBuildTimestamp: Pubspec.version.build.isNotEmpty
+        ? (int.tryParse(Pubspec.version.build.firstOrNull ?? '-1') ?? -1)
+        : -1,
+    operatingSystem: platform.operatingSystem.name,
+    processorsCount: platform.numberOfProcessors,
+    appLaunchedTimestamp: DateTime.now(),
+    locale: platform.locale,
+    deviceVersion: platform.version,
+    deviceScreenSize: ScreenUtil.screenSize().representation,
+  ),
 };
