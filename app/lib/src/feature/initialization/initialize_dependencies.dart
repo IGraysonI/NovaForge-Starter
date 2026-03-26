@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:control/control.dart';
 import 'package:l/l.dart';
+import 'package:novaforge_starter/src/common/controller/controller_observer.dart';
 import 'package:novaforge_starter/src/common/model/app_metadata.dart';
 import 'package:novaforge_starter/src/common/model/dependencies.dart';
 import 'package:novaforge_starter/src/common/util/screen_util.dart';
@@ -50,4 +52,5 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
     deviceVersion: platform.version,
     deviceScreenSize: ScreenUtil.screenSize().representation,
   ),
+  'Observer state managment': (_) => Controller.observer = const ControllerObserver(),
 };
