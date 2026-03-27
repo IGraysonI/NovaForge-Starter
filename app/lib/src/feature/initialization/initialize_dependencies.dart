@@ -9,6 +9,7 @@ import 'package:novaforge_starter/src/common/util/screen_util.dart';
 import 'package:novaforge_starter/src/constants/pubspec.yaml.g.dart';
 import 'package:novaforge_starter/src/feature/initialization/platform/platform_initialization.dart';
 import 'package:platform_info/platform_info.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 typedef _InitializationStep = FutureOr<void> Function(Dependencies dependencies);
 
@@ -53,4 +54,10 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
     deviceScreenSize: ScreenUtil.screenSize().representation,
   ),
   'Observer state managment': (_) => Controller.observer = const ControllerObserver(),
+  'Initializing analytics': (_) {},
+  'Log app open': (_) {},
+  'Get remote config': (_) {},
+  'Restore settings': (_) {},
+  'Initialize shared preferences': (dependencies) async =>
+      dependencies.sharedPreferences = await SharedPreferences.getInstance(),
 };
