@@ -60,4 +60,23 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
   'Restore settings': (_) {},
   'Initialize shared preferences': (dependencies) async =>
       dependencies.sharedPreferences = await SharedPreferences.getInstance(),
+  'Connect to database': (dependencies) async {},
+  // (dependencies.database = Config.inMemoryDatabase ? Database.memory() : Database.lazy()).refresh(),
+  'Shrink database': (dependencies) async {
+    // await dependencies.database.customStatement('VACUUM;');
+    // await dependencies.database.transaction(() async {
+    //   final log =
+    //       await (dependencies.database.select<LogTbl, LogTblData>(dependencies.database.logTbl)
+    //             ..orderBy([(tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)])
+    //             ..limit(1, offset: 1000))
+    //           .getSingleOrNull();
+    //   if (log != null) {
+    //     await (dependencies.database.delete(
+    //       dependencies.database.logTbl,
+    //     )..where((tbl) => tbl.time.isSmallerOrEqualValue(log.time))).go();
+    //   }
+    // });
+    // if (DateTime.now().second % 10 == 0) await dependencies.database.customStatement('VACUUM;');
+  },
+  // 'Migrate app from previous version': (dependencies) => AppMigrator.migrate(dependencies.database),
 };
