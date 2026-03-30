@@ -8,6 +8,10 @@ import 'package:novaforge_starter/src/common/model/dependencies.dart';
 import 'package:novaforge_starter/src/common/util/screen_util.dart';
 import 'package:novaforge_starter/src/constants/pubspec.yaml.g.dart';
 import 'package:novaforge_starter/src/feature/initialization/platform/platform_initialization.dart';
+import 'package:novaforge_starter/src/feature/settings/controller/application_settings_controller.dart';
+import 'package:novaforge_starter/src/feature/settings/data/application_settings_datasource.dart';
+import 'package:novaforge_starter/src/feature/settings/data/application_settings_repository.dart';
+import 'package:novaforge_starter/src/feature/settings/model/application_settings.dart';
 import 'package:platform_info/platform_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -79,4 +83,72 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
     // if (DateTime.now().second % 10 == 0) await dependencies.database.customStatement('VACUUM;');
   },
   // 'Migrate app from previous version': (dependencies) => AppMigrator.migrate(dependencies.database),
+  'Prepare application settings controller': (dependencies) async {
+    final applicationSettingsRepository = ApplicationSettingsRepositoryImpl(
+      ApplicationSettingsDatasourceImpl(dependencies.sharedPreferences),
+    );
+    ApplicationSettings? applicationSettings;
+    applicationSettings = await applicationSettingsRepository.getApplicationSettings();
+    if (applicationSettings == null) {
+      const defaultApplicationSettings = ApplicationSettings.defaultSettings;
+      await applicationSettingsRepository.setApplicationSettings(defaultApplicationSettings);
+      applicationSettings = defaultApplicationSettings;
+    }
+    final initialState = ApplicationSettingsState.idle(applicationSettings: applicationSettings);
+    dependencies.applicationSettingsController = ApplicationSettingsController(
+      applicaitonSettingsRepository: applicationSettingsRepository,
+      initialState: initialState,
+    );
+  },
+  'Initialize localization': (_) {},
+  // TODO: Add DAO for log table
+  'Collect logs': (dependencies) async {
+    //   await (dependencies.database.select<LogTbl, LogTblData>(dependencies.database.logTbl)
+    //         ..orderBy([(tbl) => OrderingTerm(expression: tbl.time, mode: OrderingMode.desc)])
+    //         ..limit(LogBuffer.bufferLimit))
+    //       .get()
+    //       .then<List<LogMessage>>(
+    //         (logs) => logs
+    //             .map<LogMessage>(
+    //               (l) => l.stack != null
+    //                   ? LogMessageError(
+    //                       timestamp: DateTime.fromMillisecondsSinceEpoch(l.time * 1000),
+    //                       level: LogLevel.fromValue(l.level),
+    //                       message: l.message,
+    //                       stackTrace: StackTrace.fromString(l.stack!),
+    //                     )
+    //                   : LogMessageVerbose(
+    //                       timestamp: DateTime.fromMillisecondsSinceEpoch(l.time * 1000),
+    //                       level: LogLevel.fromValue(l.level),
+    //                       message: l.message,
+    //                     ),
+    //             )
+    //             .toList(growable: false),
+    //       )
+    //       .then<void>(LogBuffer.instance.addAll);
+    //   l
+    //       .bufferTime(const Duration(seconds: 1))
+    //       .where((logs) => logs.isNotEmpty)
+    //       .listen(LogBuffer.instance.addAll, cancelOnError: false);
+    //   l
+    //       .map<LogTblCompanion>(
+    //         (log) => LogTblCompanion.insert(
+    //           level: log.level.level,
+    //           message: log.message.toString(),
+    //           time: Value<int>(log.timestamp.millisecondsSinceEpoch ~/ 1000),
+    //           stack: Value<String?>(switch (log) {
+    //             LogMessageError l => l.stackTrace.toString(),
+    //             _ => null,
+    //           }),
+    //         ),
+    //       )
+    //       .bufferTime(const Duration(seconds: 5))
+    //       .where((logs) => logs.isNotEmpty)
+    //       .listen(
+    //         (logs) =>
+    //             dependencies.database.batch((batch) => batch.insertAll(dependencies.database.logTbl, logs)).ignore(),
+    //         cancelOnError: false,
+    //       );
+  },
+  'Log app initialized': (_) {},
 };

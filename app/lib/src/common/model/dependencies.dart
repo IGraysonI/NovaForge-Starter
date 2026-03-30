@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:novaforge_starter/src/common/model/app_metadata.dart';
+import 'package:novaforge_starter/src/feature/settings/controller/application_settings_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@template dependencies}
@@ -22,6 +23,9 @@ class Dependencies {
 
   /// Shared preferences
   late final SharedPreferences sharedPreferences;
+
+  /// Application Settings Controller
+  late final ApplicationSettingsController applicationSettingsController;
 
   @override
   String toString() => 'Dependencies{}';
