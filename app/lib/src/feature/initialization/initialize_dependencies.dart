@@ -65,8 +65,10 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
   'Initialize shared preferences': (dependencies) async =>
       dependencies.sharedPreferences = await SharedPreferences.getInstance(),
   'Connect to database': (dependencies) async {},
+  // TODO: Add database initialization
   // (dependencies.database = Config.inMemoryDatabase ? Database.memory() : Database.lazy()).refresh(),
   'Shrink database': (dependencies) async {
+    // TODO: Implement database shrinking
     // await dependencies.database.customStatement('VACUUM;');
     // await dependencies.database.transaction(() async {
     //   final log =
@@ -100,9 +102,10 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
       initialState: initialState,
     );
   },
+  // TODO: Implement localization
   'Initialize localization': (_) {},
-  // TODO: Add DAO for log table
   'Collect logs': (dependencies) async {
+    // TODO: Implement log collection
     //   await (dependencies.database.select<LogTbl, LogTblData>(dependencies.database.logTbl)
     //         ..orderBy([(tbl) => OrderingTerm(expression: tbl.time, mode: OrderingMode.desc)])
     //         ..limit(LogBuffer.bufferLimit))

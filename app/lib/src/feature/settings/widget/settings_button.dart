@@ -1,6 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:octopus/octopus.dart';
 
+// TODO: Uncomment and implement the SettingsButton widget when the settings screen is implemented
 // /// {@template settings_button}
 // /// SettingsButton widget for navigating to the settings screen.
 // /// {@endtemplate}

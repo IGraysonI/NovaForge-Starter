@@ -2,6 +2,7 @@
 // import 'package:meta/meta.dart';
 // import 'package:octopus/octopus.dart';
 
+// TODO: Uncomment and implement the SettingsScreen widget when the settings screen is implemented
 // /// {@template settings_screen}
 // /// SettingsScreen widget.
 // /// {@endtemplate}
