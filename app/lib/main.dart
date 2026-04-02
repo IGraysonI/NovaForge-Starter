@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:novaforge_starter/src/common/util/app_zone.dart';
 import 'package:novaforge_starter/src/common/util/error_util.dart';
+import 'package:novaforge_starter/src/common/widget/application.dart';
 import 'package:novaforge_starter/src/common/widget/application_error.dart' deferred as app_error;
 import 'package:novaforge_starter/src/feature/initialization/initialization.dart' deferred as initialization;
 import 'package:novaforge_starter/src/feature/settings/widget/application_settings_scope.dart';
@@ -17,7 +18,7 @@ void main() => appZone(() async {
         child: ApplicationSettingsScope(
           child: NoAnimationScope(
             noAnimation: platform.js || platform.desktop,
-            child: const MainApp(),
+            child: const Application(),
           ),
         ),
       ),
@@ -29,12 +30,3 @@ void main() => appZone(() async {
     },
   );
 });
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) => const MaterialApp(
-    home: Scaffold(body: Center(child: Text('Hello World!'))),
-  );
-}

@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:novaforge_starter/src/common/constant/config.dart';
+import 'package:novaforge_starter/src/common/router/router_state_mixin.dart';
+import 'package:novaforge_starter/src/feature/settings/widget/application_settings_scope.dart';
+import 'package:octopus/octopus.dart';
+
+/// {@template app}
+/// App widget.
+/// {@endtemplate}
+class Application extends StatefulWidget {
+  /// {@macro app}
+  const Application({super.key});
+
+  @override
+  State<Application> createState() => _ApplicationState();
+}
+
+class _ApplicationState extends State<Application> with RouterStateMixin {
+  final Key builderKey = GlobalKey(); // Disable recreate widget tree
+
+  @override
+  Widget build(BuildContext context) {
+    final applicationSettings = ApplicationSettingsScope.settingsOf(context);
+    final locale = applicationSettings.locale;
+    final theme = applicationSettings.applicationTheme;
+    final lightTheme = theme?.buildThemeData(Brightness.light);
+    final darkTheme = theme?.buildThemeData(Brightness.dark);
+    final themeMode = theme?.themeMode;
+    return MaterialApp.router(
+      title: 'Daily Tasks',
+      debugShowCheckedModeBanner: !Config.environment.isProduction,
+
+      // Router
+      routerConfig: router.config,
+
+      // Localizations
+      localizationsDelegates: const <LocalizationsDelegate<Object?>>[
+        // TODO: Add localization
+        // GlobalMaterialLocalizations.delegate,
+        // GlobalWidgetsLocalizations.delegate,
+        // GlobalCupertinoLocalizations.delegate,
+        // Localization.delegate,
+      ],
+      // supportedLocales: Localization.supportedLocales,
+      // locale: SettingsScope.localOf(context),
+      locale: locale,
+
+      // Theme
+      /* theme: SettingsScope.themeOf(context), */
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: themeMode,
+      // Scopes
+      builder: (context, child) => MediaQuery(
+        key: builderKey,
+        data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+        child:
+            // WindowScope(
+            //   title: Localization.of(context).title,
+            //   child:
+            OctopusTools(
+              child: child ?? const SizedBox.shrink(),
+            ),
+        // ),
+      ),
+    );
+  }
+}
