@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:novaforge_starter/src/common/constant/config.dart';
 import 'package:novaforge_starter/src/common/router/router_state_mixin.dart';
+import 'package:novaforge_starter/src/common/widget/window_scope.dart';
 import 'package:novaforge_starter/src/feature/settings/widget/application_settings_scope.dart';
 import 'package:octopus/octopus.dart';
 
@@ -27,7 +28,7 @@ class _ApplicationState extends State<Application> with RouterStateMixin {
     final darkTheme = theme?.buildThemeData(Brightness.dark);
     final themeMode = theme?.themeMode;
     return MaterialApp.router(
-      title: 'Daily Tasks',
+      title: 'NovaForge Starter',
       debugShowCheckedModeBanner: !Config.environment.isProduction,
 
       // Router
@@ -54,14 +55,14 @@ class _ApplicationState extends State<Application> with RouterStateMixin {
       builder: (context, child) => MediaQuery(
         key: builderKey,
         data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
-        child:
-            // WindowScope(
-            //   title: Localization.of(context).title,
-            //   child:
-            OctopusTools(
-              child: child ?? const SizedBox.shrink(),
-            ),
-        // ),
+        child: WindowScope(
+          // TODO: Add localization
+          // title: Localization.of(context).title,
+          title: 'Title',
+          child: OctopusTools(
+            child: child ?? const SizedBox.shrink(),
+          ),
+        ),
       ),
     );
   }
