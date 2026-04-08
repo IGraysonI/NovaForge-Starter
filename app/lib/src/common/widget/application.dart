@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:novaforge_starter/src/common/constant/config.dart';
 import 'package:novaforge_starter/src/common/router/router_state_mixin.dart';
 import 'package:novaforge_starter/src/common/widget/window_scope.dart';
@@ -36,13 +37,12 @@ class _ApplicationState extends State<Application> with RouterStateMixin {
 
       // Localizations
       localizationsDelegates: const <LocalizationsDelegate<Object?>>[
-        // TODO: Add localization
-        // GlobalMaterialLocalizations.delegate,
-        // GlobalWidgetsLocalizations.delegate,
-        // GlobalCupertinoLocalizations.delegate,
-        // Localization.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        Sheet1Localization.delegate,
       ],
-      // supportedLocales: Localization.supportedLocales,
+      supportedLocales: Sheet1Localization.supportedLocales,
       // locale: SettingsScope.localOf(context),
       locale: locale,
 

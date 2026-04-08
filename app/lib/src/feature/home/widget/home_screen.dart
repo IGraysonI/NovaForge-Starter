@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 
 /// {@template home_screen}
 /// HomeScreen widget.
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => const MaterialApp(
-    home: Scaffold(body: Center(child: Text('Hello World!'))),
+  Widget build(BuildContext context) => MaterialApp(
+    home: Scaffold(body: Center(child: Text(Sheet1Localization.of(context).title))),
   );
 }

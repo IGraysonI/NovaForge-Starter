@@ -41,6 +41,12 @@ dependencies:
   async: any
   intl: any
 
+  # Localization
+  flutter_localizations:
+    sdk: flutter
+  localization:
+    path: ../packages/localization
+
   # Annotation
   meta: any
   json_annotation: ^4.9.0
