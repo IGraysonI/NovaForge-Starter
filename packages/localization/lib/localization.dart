@@ -1,5 +1,8 @@
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+// This file is generated, do not edit it manually!
+// ignore_for_file: directives_ordering
+library;
+
+export 'package:flutter_localizations/flutter_localizations.dart';
+
+export 'src/generated/Sheet1/Sheet1_localization.dart';
+export 'src/generated/locales.dart';
