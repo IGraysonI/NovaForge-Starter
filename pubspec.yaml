@@ -8,3 +8,4 @@ environment:
 workspace:
   - app
   - packages/localization
+  - packages/database
