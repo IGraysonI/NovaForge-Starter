@@ -9,6 +9,8 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  meta: any
+
   drift: ^2.28.0
   drift_flutter: ^0.2.5
   drift_db_viewer: ^2.1.0
