@@ -55,3 +55,4 @@ macos/
 #WEB
 node_modules/
 packages/localization/credentials.json
+pubspec.lock

@@ -1,7 +1,9 @@
 import 'package:drift/drift.dart';
+import 'package:uuid/uuid.dart';
 
 export 'package:drift/drift.dart';
 
+// TODO: Change ID to int?
 /// Type for identificators in the database
 /// if you want to change it, change it here
 typedef IdentificatorType = String;
