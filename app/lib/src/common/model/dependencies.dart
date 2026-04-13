@@ -1,3 +1,4 @@
+import 'package:database/database.dart';
 import 'package:flutter/widgets.dart';
 import 'package:novaforge_starter/src/common/model/app_metadata.dart';
 import 'package:novaforge_starter/src/feature/settings/controller/application_settings_controller.dart';
@@ -23,6 +24,9 @@ class Dependencies {
 
   /// Shared preferences
   late final SharedPreferences sharedPreferences;
+
+  /// Sql database
+  late final SqlDatabase database;
 
   /// Application Settings Controller
   late final ApplicationSettingsController applicationSettingsController;

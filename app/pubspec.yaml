@@ -47,6 +47,10 @@ dependencies:
   localization:
     path: ../packages/localization
 
+  # Database
+  database:
+    path: ../packages/database
+
   # Annotation
   meta: any
   json_annotation: ^4.9.0

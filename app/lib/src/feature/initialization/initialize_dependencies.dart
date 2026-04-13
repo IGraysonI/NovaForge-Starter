@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:control/control.dart';
+import 'package:database/database.dart';
 import 'package:l/l.dart';
 import 'package:novaforge_starter/src/common/controller/controller_observer.dart';
 import 'package:novaforge_starter/src/common/model/app_metadata.dart';
@@ -64,9 +65,10 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
   'Restore settings': (_) {},
   'Initialize shared preferences': (dependencies) async =>
       dependencies.sharedPreferences = await SharedPreferences.getInstance(),
-  'Connect to database': (dependencies) async {},
-  // TODO: Add database initialization
-  // (dependencies.database = Config.inMemoryDatabase ? Database.memory() : Database.lazy()).refresh(),
+  'Connect to database': (dependencies) async =>
+      // TODO: Add database initialization
+      // (dependencies.database = Config.inMemoryDatabase ? Database.memory() : Database.lazy()).refresh(),
+      dependencies.database = SqlDatabase.defaults(),
   'Shrink database': (dependencies) async {
     // TODO: Implement database shrinking
     // await dependencies.database.customStatement('VACUUM;');
