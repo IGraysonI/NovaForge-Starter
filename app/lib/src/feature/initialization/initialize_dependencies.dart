@@ -66,7 +66,6 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
   'Initialize shared preferences': (dependencies) async =>
       dependencies.sharedPreferences = await SharedPreferences.getInstance(),
   'Connect to database': (dependencies) async =>
-      // TODO: Add database initialization
       // (dependencies.database = Config.inMemoryDatabase ? Database.memory() : Database.lazy()).refresh(),
       dependencies.database = SqlDatabase.defaults(),
   'Shrink database': (dependencies) async {
@@ -104,8 +103,6 @@ final Map<String, _InitializationStep> _initializationSteps = <String, _Initiali
       initialState: initialState,
     );
   },
-  // TODO: Implement localization
-  'Initialize localization': (_) {},
   'Collect logs': (dependencies) async {
     // TODO: Implement log collection
     //   await (dependencies.database.select<LogTbl, LogTblData>(dependencies.database.logTbl)
