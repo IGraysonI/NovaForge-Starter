@@ -51,6 +51,10 @@ dependencies:
   database:
     path: ../packages/database
 
+  # UI components
+  ui:
+    path: ../packages/ui
+
   # Annotation
   meta: any
   json_annotation: ^4.9.0
