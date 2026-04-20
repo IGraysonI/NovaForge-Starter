@@ -1,3 +1,4 @@
+import 'package:database/database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:novaforge_starter/src/common/model/dependencies.dart';
@@ -321,12 +322,9 @@ class _ViewDatabaseTile extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        // onTap: () => Octopus.of(context).showDialog<void>(
-        //   (_) => Dialog(child: DriftDbViewer(Dependencies.of(context).database)),
-        // ),
-        onTap: () {
-          // TODO: Implement DriftDbViewer
-        },
+        onTap: () => Octopus.of(context).showDialog<void>(
+          (_) => Dialog(child: DriftDbViewer(Dependencies.of(context).database)),
+        ),
       ),
     ),
   );
@@ -347,32 +345,31 @@ class _ClearDatabaseTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         onTap: () {
-          // TODO: Restore
-          // final db = Dependencies.of(context).database;
-          // final messenger = ScaffoldMessenger.maybeOf(context);
-          // Future<void>(() async {
-          //   try {
-          //     await db.customStatement('PRAGMA foreign_keys = OFF');
-          //     try {
-          //       await db.batch((batch) => db.allTables.forEach(batch.deleteAll));
-          //     } finally {
-          //       await db.customStatement('PRAGMA foreign_keys = ON');
-          //     }
-          //     messenger
-          //       ?..clearSnackBars()
-          //       ..showSnackBar(const SnackBar(content: Text('Database cleared'), duration: Duration(seconds: 3)));
-          //   } on Object catch (error) {
-          //     messenger
-          //       ?..clearSnackBars()
-          //       ..showSnackBar(
-          //         SnackBar(
-          //           content: Text('Database clear failed: $error'),
-          //           backgroundColor: Colors.red,
-          //           duration: const Duration(seconds: 3),
-          //         ),
-          //       );
-          //   }
-          // });
+          final db = Dependencies.of(context).database;
+          final messenger = ScaffoldMessenger.maybeOf(context);
+          Future<void>(() async {
+            try {
+              await db.customStatement('PRAGMA foreign_keys = OFF');
+              try {
+                await db.batch((batch) => db.allTables.forEach(batch.deleteAll));
+              } finally {
+                await db.customStatement('PRAGMA foreign_keys = ON');
+              }
+              messenger
+                ?..clearSnackBars()
+                ..showSnackBar(const SnackBar(content: Text('Database cleared'), duration: Duration(seconds: 3)));
+            } on Object catch (error) {
+              messenger
+                ?..clearSnackBars()
+                ..showSnackBar(
+                  SnackBar(
+                    content: Text('Database clear failed: $error'),
+                    backgroundColor: Colors.red,
+                    duration: const Duration(seconds: 3),
+                  ),
+                );
+            }
+          });
         },
       ),
     ),

@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_classes_with_only_static_members
-
 import 'dart:convert';
 
 import 'package:intl/intl.dart' as intl;
@@ -24,12 +22,12 @@ DateTime fromJsonDateTime(Object json) =>
 
 /// Restore the [DateTime] from a JSON value or return `null` if the value is `null`.
 DateTime? fromJsonDateTimeOrNull(Object? json) => switch (json) {
-      String s => DateTime.tryParse(s),
-      null => null,
-      int ms => DateTime.fromMillisecondsSinceEpoch(ms),
-      DateTime dt => dt,
-      _ => throw ArgumentError.value(json, 'json', 'Invalid DateTime value'),
-    };
+  String s => DateTime.tryParse(s),
+  null => null,
+  int ms => DateTime.fromMillisecondsSinceEpoch(ms),
+  DateTime dt => dt,
+  _ => throw ArgumentError.value(json, 'json', 'Invalid DateTime value'),
+};
 
 /// A [Converter] that converts between a [DateTime] and a [String] in the
 /// ISO 8601 format.

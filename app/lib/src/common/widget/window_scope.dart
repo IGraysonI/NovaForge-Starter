@@ -2,6 +2,7 @@ import 'dart:io' as io;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 import 'package:platform_info/platform_info.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -116,9 +117,8 @@ class _WindowTitleState extends State<_WindowTitle> with WindowListener {
                         child: ScaleTransition(scale: animation, child: child),
                       ),
                       child: Text(
-                        // TODO: Add localization
-                        // context.findAncestorWidgetOfExactType<WindowScope>()?.title ?? Localization.of(context).title,
-                        context.findAncestorWidgetOfExactType<WindowScope>()?.title ?? 'Title',
+                        context.findAncestorWidgetOfExactType<WindowScope>()?.title ??
+                            Sheet1Localization.of(context).title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(height: 1),

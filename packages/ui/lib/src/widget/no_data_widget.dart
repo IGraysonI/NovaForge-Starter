@@ -32,55 +32,49 @@ class NoDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (showPic)
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Container(
-                height: MediaQuery.of(context).size.width * .6,
-                width: MediaQuery.of(context).size.height * .6,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.primary.withValues(alpha: .1),
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Theme.of(context).primaryColor.withValues(alpha: .05),
-                        blurRadius: 55,
-                        spreadRadius: 100,
-                        offset: const Offset(0, 10),
-                      ),
-                    ],
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      if (showPic)
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Container(
+            height: MediaQuery.of(context).size.width * .6,
+            width: MediaQuery.of(context).size.height * .6,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Theme.of(context).colorScheme.primary.withValues(alpha: .1),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).primaryColor.withValues(alpha: .05),
+                    blurRadius: 55,
+                    spreadRadius: 100,
+                    offset: const Offset(0, 10),
                   ),
-                  height: MediaQuery.of(context).size.width * .5,
-                  width: MediaQuery.of(context).size.height * .5,
-                  child: Image.asset('assets/images/empty_data.png', fit: BoxFit.contain),
-                ),
+                ],
               ),
+              height: MediaQuery.of(context).size.width * .5,
+              width: MediaQuery.of(context).size.height * .5,
+              child: Image.asset('assets/images/empty_data.png', fit: BoxFit.contain),
             ),
-          Text(
-            text,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleLarge,
           ),
-          if (showButton)
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: TextButton(
-                onPressed: onPressed,
-                child: Text(
-                  buttonText ?? 'Try Again',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                ),
-              ),
+        ),
+      Text(text, textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleLarge),
+      if (showButton)
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: TextButton(
+            onPressed: onPressed,
+            child: Text(
+              buttonText ?? 'Try Again',
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Theme.of(context).colorScheme.primary),
             ),
-        ],
-      );
+          ),
+        ),
+    ],
+  );
 }
