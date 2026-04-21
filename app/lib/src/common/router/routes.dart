@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:novaforge_starter/src/feature/developer/widget/developer_screen.dart';
 import 'package:novaforge_starter/src/feature/home/widget/home_screen.dart';
+import 'package:novaforge_starter/src/feature/settings/widget/settings_screen.dart';
 import 'package:octopus/octopus.dart';
 
 /// {@template routes}
@@ -8,7 +9,8 @@ import 'package:octopus/octopus.dart';
 /// {@endtemplate}
 enum Routes with OctopusRoute {
   home('home', title: 'Home'),
-  developer('developer', title: 'Developer');
+  developer('developer', title: 'Developer'),
+  settings('settings', title: 'Settings');
 
   const Routes(this.name, {this.title});
 
@@ -22,5 +24,6 @@ enum Routes with OctopusRoute {
   Widget builder(BuildContext context, OctopusState state, OctopusNode node) => switch (this) {
     Routes.home => const HomeScreen(),
     Routes.developer => const DeveloperScreen(),
+    Routes.settings => const SettingsScreen(),
   };
 }
