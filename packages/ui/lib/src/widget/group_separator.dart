@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:novaforge_starter/src/common/widget/scaffold_padding.dart';
+import 'package:ui/src/widget/base/scaffold_padding.dart';
 
 /// {@template group_separator}
 /// GroupSeparator widget for separating groups of items in a list.
@@ -22,10 +22,7 @@ class GroupSeparator extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            const SizedBox(
-              width: 48,
-              child: Divider(indent: 16, endIndent: 16),
-            ),
+            const SizedBox(width: 48, child: Divider(indent: 16, endIndent: 16)),
             Text(
               title,
               maxLines: 1,

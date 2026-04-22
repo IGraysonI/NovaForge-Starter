@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:novaforge_starter/src/feature/developer/widget/developer_button.dart';
+import 'package:novaforge_starter/src/feature/settings/widget/settings_button.dart';
 
 /// {@template common_actions}
 /// CommonActions is a list of common actions used in the app for the app bar.
@@ -12,6 +13,7 @@ class CommonActions extends ListBase<Widget> {
     : _actions = <Widget>[
         ...?actions,
         if (kDebugMode) const DeveloperButton(),
+        const SettingsButton(),
       ];
 
   final List<Widget> _actions;
