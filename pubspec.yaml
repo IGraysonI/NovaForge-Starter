@@ -10,3 +10,4 @@ workspace:
   - packages/localization
   - packages/database
   - packages/ui
+  - packages/analytics
