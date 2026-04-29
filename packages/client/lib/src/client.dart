@@ -6,10 +6,18 @@ typedef ClientResponse = Future<Map<String, Object?>?>;
 /// {@endtemplate}
 abstract interface class Client {
   /// Sends a HEAD request to the given [path].
-  ClientResponse head(String path, {Map<String, Object?>? headers, Map<String, String?>? queryParams});
+  ClientResponse head(
+    String path, {
+    Map<String, Object?>? headers,
+    Map<String, String?>? queryParams,
+  });
 
   /// Sends a GET request to the given [path].
-  ClientResponse get(String path, {Map<String, Object?>? headers, Map<String, String?>? queryParams});
+  ClientResponse get(
+    String path, {
+    Map<String, Object?>? headers,
+    Map<String, String?>? queryParams,
+  });
 
   /// Sends a POST request to the given [path].
   ClientResponse post(

@@ -17,6 +17,7 @@ dependencies:
   path: any
   meta: any
   http_parser: any
+  l: any
 
 dev_dependencies:
   flutter_test:
