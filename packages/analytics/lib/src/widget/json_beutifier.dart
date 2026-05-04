@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class GenericJsonBeautifier extends StatelessWidget {
+  const GenericJsonBeautifier({required this.json, this.map, super.key});
+
   final dynamic json; // Поддержка как Map, так и List
   final Map<String, dynamic>? map;
-  const GenericJsonBeautifier({required this.json, this.map, super.key});
 
   @override
   Widget build(BuildContext context) => RichText(
