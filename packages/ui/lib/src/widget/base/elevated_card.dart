@@ -6,7 +6,13 @@ import 'package:flutter/services.dart';
 /// {@endtemplate}
 class ElevatedCard extends StatelessWidget {
   /// {@macro elevated_card}
-  const ElevatedCard({required this.child, this.padding, this.margin, this.onCardTap, super.key});
+  const ElevatedCard({
+    required this.child,
+    this.padding,
+    this.margin,
+    this.onCardTap,
+    super.key,
+  });
 
   /// The widget inside the card.
   final Widget child;
