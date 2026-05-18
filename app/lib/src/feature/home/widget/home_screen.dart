@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:localization/localization.dart';
+import 'package:novaforge_starter/src/common/widget/common_actions.dart';
 
 /// {@template home_screen}
 /// HomeScreen widget.
@@ -12,6 +13,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-    home: Scaffold(body: Center(child: Text(Sheet1Localization.of(context).title))),
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text(Sheet1Localization.of(context).title),
+        actions: CommonActions(),
+      ),
+      body: Center(child: Text(Sheet1Localization.of(context).title)),
+    ),
   );
 }

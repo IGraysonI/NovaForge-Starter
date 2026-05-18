@@ -47,7 +47,7 @@ class _ApplicationState extends State<Application> with RouterStateMixin {
       locale: locale,
 
       // Theme
-      /* theme: SettingsScope.themeOf(context), */
+      // theme: SettingsScope.themeOf(context),
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeMode,
