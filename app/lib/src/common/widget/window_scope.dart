@@ -6,6 +6,8 @@ import 'package:localization/localization.dart';
 import 'package:platform_info/platform_info.dart';
 import 'package:window_manager/window_manager.dart';
 
+// TODO: Slow maximizing speed
+// TODO: Minimize window not working
 /// {@template window_scope}
 /// WindowScope widget.
 /// {@endtemplate}
