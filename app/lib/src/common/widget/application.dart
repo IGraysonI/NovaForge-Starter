@@ -4,7 +4,6 @@ import 'package:novaforge_starter/src/common/router/router_state_mixin.dart';
 import 'package:novaforge_starter/src/common/widget/window_scope.dart';
 import 'package:novaforge_starter/src/feature/settings/widget/application_settings_scope.dart';
 import 'package:octopus/octopus.dart';
-import 'package:ui/ui.dart';
 
 /// {@template app}
 /// App widget.
@@ -30,7 +29,8 @@ class _ApplicationState extends State<Application> with RouterStateMixin {
     final themeMode = theme?.themeMode;
     return MaterialApp.router(
       title: 'NovaForge Starter',
-      debugShowCheckedModeBanner: !Config.environment.isProduction,
+      // debugShowCheckedModeBanner: !Config.environment.isProduction,
+      debugShowCheckedModeBanner: false,
 
       // Router
       routerConfig: router.config,
@@ -47,7 +47,7 @@ class _ApplicationState extends State<Application> with RouterStateMixin {
       locale: locale,
 
       // Theme
-      /* theme: SettingsScope.themeOf(context), */
+      // theme: SettingsScope.themeOf(context),
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeMode,

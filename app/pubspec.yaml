@@ -57,7 +57,7 @@ dependencies:
 
   # Annotation
   meta: any
-  json_annotation: ^4.9.0
+  json_annotation: ^4.12.0
 
   # Routing
   octopus: ^0.0.9
@@ -66,7 +66,7 @@ dependencies:
   control: ^0.2.0
 
   # Storing data
-  shared_preferences: ^2.5.3
+  shared_preferences: ^2.5.5
 
   # Logging
   l: ^5.0.1
@@ -74,7 +74,7 @@ dependencies:
   stack_trace: 1.12.1
 
   # Desktop
-  win32: ^5.15.0
+  win32: ^6.2.0
   window_manager: ^0.5.1
 
   # Web
@@ -82,7 +82,7 @@ dependencies:
 
   # Utils
   clock: ^1.1.2
-  package_info_plus: ^9.0.0
+  package_info_plus: ^10.1.0
   drift_db_viewer: ^2.1.0
   platform_info: ^5.0.0
   path_provider: ^2.1.5
@@ -96,8 +96,8 @@ dev_dependencies:
   flutter_lints: ^6.0.0
 
   # Code generation
-  build_runner: ^2.4.11
-  flutter_gen_runner: ^5.13.0
+  build_runner: ^2.15.0
+  flutter_gen_runner: ^5.14.1
   pubspec_generator: ^5.0.1
 
   # TODO: Add script for flutter_launcher_icons
