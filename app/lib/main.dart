@@ -7,6 +7,7 @@ import 'package:novaforge_starter/src/feature/initialization/initialization.dart
 import 'package:novaforge_starter/src/feature/settings/widget/application_settings_scope.dart';
 import 'package:octopus/octopus.dart';
 import 'package:platform_info/platform_info.dart';
+import 'package:ui/ui.dart';
 
 void main() => appZone(() async {
   final initializationProgress = ValueNotifier<({int progress, String message})>((progress: 0, message: ''));
@@ -15,10 +16,12 @@ void main() => appZone(() async {
     onProgress: (progress, message) => initializationProgress.value = (progress: progress, message: message),
     onSuccess: (dependencies) async => runApp(
       dependencies.inject(
-        child: ApplicationSettingsScope(
-          child: NoAnimationScope(
-            noAnimation: platform.js || platform.desktop,
-            child: const Application(),
+        child: UiBreakpointScope(
+          child: ApplicationSettingsScope(
+            child: NoAnimationScope(
+              noAnimation: platform.js || platform.desktop,
+              child: const Application(),
+            ),
           ),
         ),
       ),
