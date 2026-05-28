@@ -40,6 +40,7 @@ dependencies:
   collection: any
   async: any
   intl: any
+  path: any
 
   # Localization
   flutter_localizations:
