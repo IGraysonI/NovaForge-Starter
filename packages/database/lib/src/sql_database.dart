@@ -4,9 +4,6 @@ import 'package:database/src/schema/base_schema.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:l/l.dart';
 
-// TODO: Uncomment when added new tables for it usage in generated file
-// import 'package:uuid/uuid.dart';
-
 export 'package:database/src/source/sql_database_source.dart';
 export 'package:database/src/sql_database.dart' show SqlDatabase;
 export 'package:database/src/tables/tables.dart';
