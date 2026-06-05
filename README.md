@@ -8,3 +8,12 @@ This template is built on top of [sizzle_starter](https://github.com/hawkkiller/
 Unlike sizzle_starter, this version reflects a personal opinionated structure rather than a generalized starter.
 
 Additionally, the template integrates several packages from the [PlugFox](https://plugfox.dev/packages/) ecosystem, which offer high-quality, modular tools tailored for production-level Flutter development.
+
+
+## Get started
+
+Replace project name, description and organization:
+
+```bash
+dart run tool/dart/rename_project.dart --name="project" --organization="tld.domain" --description="My project description"
+```
