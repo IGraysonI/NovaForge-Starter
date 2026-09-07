@@ -15,8 +15,10 @@ Future<void> _mobileInitialization() async {
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   // Set the preferred orientation of the app to landscape only.
   await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
+    DeviceOrientation.portraitUp,
+    // FIXME: Causes application to launch in landscape mode on Android while phone is in portrait mode
+    // DeviceOrientation.landscapeLeft,
+    // DeviceOrientation.landscapeRight,
   ]);
 }
 
